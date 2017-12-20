@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Light Up</title>
+	<link rel="stylesheet" href="light-up.css"/>
+	<link rel="stylesheet" href="animate.css"/>
+</head>
+<body>
+	<div id="light-up">
+		<a href="images/apple.jpg">
+			<img src="images/apple.jpg" alt="apple.jpg" data-img="images/apple.jpg">
+		</a>
+		<a href="images/balls.jpg">
+			<img src="images/balls.jpg" alt="balls.jpg" data-img="images/balls.jpg">
+		</a>
+		<a href="images/cover1.jpg">
+			<img src="images/cover1.jpg" alt="cover1.jpg" data-img="images/cover1.jpg">
+		</a>
+		<a href="images/cover9.webp">
+			<img src="images/cover9.webp" alt="cover9.webp" data-img="images/cover9.webp">
+		</a>
+		<a href="images/balloons.jpg">
+			<img src="images/balloons.jpg" alt="balloons.jpg" data-img="images/balloons.jpg">
+		</a>
+		<a href="images/iphone.jpeg">
+			<img src="images/iphone.jpeg" alt="iphone.jpeg" data-img="images/iphone.jpeg">
+		</a>
+
+	</div>
+	<script src="jquery.js"></script>
+	<script src="light-up.js"></script>
+	<script>
+		$("#light-up").LightUp({
+			theme:$.LightUp.DARK_THEME,
+			useImageAsBackground:false,
+			hideHeader:false
+		});
+	</script>
+</body>
+</html>
