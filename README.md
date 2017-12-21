@@ -8,29 +8,30 @@ LightUp is a Fast,lightweight and well simplified gallery lightbox designed to e
 
 # USAGE
  ## HTML
-<div id="light-up">
+	<div id="light-up">
 		<a href="images/apple.jpg">
-			<img src="images/apple.jpg" alt="apple.jpg" data-img="images/apple.jpg">
+		 <img src="images/apple.jpg" alt="apple.jpg" data-img="images/apple.jpg">
 		</a>
 		<a href="images/balls.jpg">
-			<img src="images/balls.jpg" alt="balls.jpg" data-img="images/balls.jpg">
+		  <img src="images/balls.jpg" alt="balls.jpg" data-img="images/balls.jpg">
 		</a>
-		<a href="images/cover1.jpg">
-			<img src="images/cover1.jpg" alt="cover1.jpg" data-img="images/cover1.jpg">
-  </a>
-</div>
+	</div>
+
  ## Plugin
- <script>
+	 <script>
 		$("#light-up").LightUp({
 			theme:$.LightUp.DARK_THEME,
 			useImageAsBackground:true,
 			hideHeader:true
 		});
 	</script>
-# COMING SOON
+	
+	
+## COMING SOON
  Share - You will be able to share the currently viewing image with various platforms
  Autoplay - You will be able to allow the images to play automatically
-
-# OTHERS
+## CONTACT INFO
+ email : offeilord@gmail.com , acheampong.lord@yahoo.com
+ 
 ## WORK IN PROGRESS 
 
