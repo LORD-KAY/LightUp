@@ -23,7 +23,7 @@
 			overlay_bottomSheet  = $('<div id="overlay_btsheet"></div>'),
 			imgTag   = $("<img/>"),
 			navBarRight = $('<ul id="navBarRight"><li><a href="javascript:void(0)" id="close" class="waves-effect waves-ripple waves-circle"><i class="material-icons cmake">arrow_back</i></i></li></ul>'),
-			navBarLeft  = $('<ul id="navBarLeft"><li><a class="waves-circle waves-ripple waves-effect"><i class="material-icons cmake">fullscreen</i></a></li><li><a class="waves-circle waves-ripple waves-effect"><i class="material-icons cmake">file_download</i></a></li><li><a class="waves-circle waves-ripple waves-effect"><i class="material-icons cmake">info</i></a></li></ul>'),
+			navBarLeft  = $('<ul id="navBarLeft"><li><a class="waves-circle waves-ripple waves-effect"><i class="material-icons cmake">file_download</i></a></li><li><a class="waves-circle waves-ripple waves-effect"><i class="material-icons cmake">info</i></a></li></ul>'),
 			imageProfile = $('<li class="imageProfile"><a class="waves-effect waves-ripple waves-circle"><img class="responsive-img"/></a><span class="data-name">Acheampong Lord</span></li>');
 
 		//Checking if the function is not null
@@ -107,6 +107,7 @@
 	    	overlay.detach();
 	    	overlay_header.detach();
 	    	overlay_body.detach();
+	    	overlay_imgContainer.detach();
 	    	//Trials not stable
 	    	var subPage = window.location.href,
 	    		title   = subPage.split("/"),
@@ -114,13 +115,21 @@
 	    		
 	    		
 	    });
+	    //Getting all the images inside the container
+	    var dataImg,__imgHref,objImages,$asArray,$pathURI,$tagSRC;
 
-		_getImage.click(function(event){
+		for (var i = 0; i < _getImage.length; i++) {
+			var dataImg = _getImage[i];
+			var __imgHref = $(dataImg).attr("href");
+			objImages = $('<img src="'+ __imgHref +'" class="responsive-img"/>');
+			overlay_imgContainer.append(objImages);
+		}
+
+		_getImage.bind("click tap",function(event){
 			window.location.hash = $(this).attr("id");
        		 event.preventDefault();
        		_getImgsrc = $(this).attr("href");
        		DrawCanvas();
-
        		overlay_imgContainer.css({
        			"width":"55%",
        			"height":"100%",
@@ -129,13 +138,77 @@
        			"left":"300px",
        			"background-color":"black"
        		});
+
+       		$asArray = overlay_imgContainer.children();
+       		$asArray.css({
+       			"display":"none",
+       		});
+
+       		for (var i = 0; i < $asArray.length; i++) {
+       			$pathURI = $($asArray[i]);
+       			if ($pathURI.attr("src") === _getImgsrc) {
+       				$pathURI.css({"display":"block"});
+       			}
+       		}
+
        		//Callling the background image function here
        		imgAsBackground();
        		hideHeader();
-       		overlay_imgContainer.append(imgTag);
-       		imgTag.attr("src",""+_getImgsrc+"");
+       		// overlay_imgContainer.append(imgTag);
+       		// imgTag.attr("src",""+_getImgsrc+"");
 		});
 
+		//Check for fullscreen browser support
+		function CheckFullscreen(){
+			var fullscreen = '';
+			if (!document.fullscreenEnabled && !document.webkitFullscreenEnabled && 
+				!document.mozFullScreenEnabled && !document.msFullscreenEnabled) {
+				return;
+			}else{
+				fullscreen = '<li><a id="fullscreen" class="waves-circle waves-ripple waves-effect"><i class="material-icons cmake">fullscreen</i></a></li>';
+				navBarLeft.prepend(fullscreen);
+			}
+		}
+
+		function requestFullscreen(){
+			var el = document.documentElement;
+			if (el.requestFullscreen) {
+				el.requestFullscreen();
+			}else if (el.msRequestFullscreen) {
+				el.msRequestFullscreen();
+			}else if (el.mozRequestFullScreen) {
+				el.mozRequestFullScreen();
+			}
+			else if (el.webkitRequestFullscreen) {
+				el.webkitRequestFullscreen();
+			}
+		}
+
+		function exitFullscreen(){
+			var _exit = document.exitFullscreen;
+			if (_exit) {
+				document.exitFullscreen();
+			}
+			else if (document.msExitFullscreen) {
+				document.msExitFullscreen();
+			}else if (document.mozCancelFullScreen) {
+				document.mozCancelFullScreen();
+			}else if (document.webkitExitFullscreen) {
+				document.webkitExitFullscreen();
+			}
+		}
+
+		//Calling the init functions
+		CheckFullscreen();
+		navBarLeft.children().find("#fullscreen").on("click",function(element,event){
+			if (!document.fullscreenElement && !document.msFullscreenElement && 
+				!document.mozFullScreenElement && !document.webkitFullscreenElement) {
+				requestFullscreen();
+			}
+			else{
+				exitFullscreen();
+			}
+		});
 		//Configuring the theme
 		var _getTheme = settings.theme;
 		switch(_getTheme){
