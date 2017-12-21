@@ -2,9 +2,9 @@
 LightUp is a Fast,lightweight and well simplified gallery lightbox designed to enable novice,intermediate and advance developers achieve a simple image navigation activities. This plugin is easy to use
 
 # FEATURES INCLUDE
- Fullscreen - You have the option to allow fullscreen of the plugin for wider view of images 
- Download - You have the option to download the currently viewing image onto your computer
- Information - You have the option to view information about the image , it been the size,date,time,name and others ...
+ Fullscreen - You have the option to allow fullscreen of the plugin for wider view of images <br/>
+ Download - You have the option to download the currently viewing image onto your computer <br/>
+ Information - You have the option to view information about the image , it been the size,date,time,name and others ... <br/>
 
 # USAGE
  ## HTML
@@ -20,16 +20,20 @@ LightUp is a Fast,lightweight and well simplified gallery lightbox designed to e
  ## Plugin
 	 <script>
 		$("#light-up").LightUp({
-			theme:$.LightUp.DARK_THEME,
 			useImageAsBackground:true,
 			hideHeader:true
 		});
 	</script>
-	
+
+## Options
+ useImageAsBackground: This allows the plugin to set the images as a background with blurred effect and animations. It uses 
+ boolean values ( True or False). <br/>
+ hideHeader: This allows the plugin to set the header visibility, as to whether to show the header or fade the header. It 
+ uses boolean values either True or False <br/>
 	
 ## COMING SOON
- Share - You will be able to share the currently viewing image with various platforms
- Autoplay - You will be able to allow the images to play automatically
+ Share - You will be able to share the currently viewing image with various platforms <br/>
+ Autoplay - You will be able to allow the images to play automatically <br/>
 ## CONTACT INFO
  email : offeilord@gmail.com , acheampong.lord@yahoo.com
  
