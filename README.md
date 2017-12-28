@@ -1,4 +1,13 @@
+<p align="center">
+  <a href="http://materializecss.com/">
+    <img src="images/idea.svg" width="230">
+  </a>
 
+  <h3 align="center">Light Up</h3>
+  <p align="center">
+    LightUp - A lightweight plugin base on jQuery.
+    <br>
+</p>	
 LightUp is a Fast,lightweight and well simplified gallery lightbox designed to enable novice,intermediate and advance developers achieve a simple image navigation activities. This plugin is easy to use
 
 # FEATURES INCLUDE
