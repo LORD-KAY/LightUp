@@ -1,5 +1,5 @@
 <center>
-	<img src="images/idea.svg" alt="LightUp" width="200px" height="200px"/>
+	<img src="images/idea.svg" alt="LightUp" width="300px" height="300px" style="margin-left:20%;"/>
 </center>	
 LightUp is a Fast,lightweight and well simplified gallery lightbox designed to enable novice,intermediate and advance developers achieve a simple image navigation activities. This plugin is easy to use
 
