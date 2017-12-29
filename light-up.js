@@ -23,7 +23,7 @@
 			overlay_bottomSheet  = $('<div id="overlay_btsheet"></div>'),
 			imgTag   = $("<img/>"),
 			navBarRight = $('<ul id="navBarRight"><li><a href="javascript:void(0)" id="close" class="waves-effect waves-ripple waves-circle"><i class="material-icons cmake">arrow_back</i></i></li></ul>'),
-			navBarLeft  = $('<ul id="navBarLeft"><li><a class="waves-circle waves-ripple waves-effect"><i class="material-icons cmake">file_download</i></a></li><li><a class="waves-circle waves-ripple waves-effect"><i class="material-icons cmake">info</i></a></li></ul>'),
+			navBarLeft  = $('<ul id="navBarLeft"><li><a class="waves-circle waves-ripple waves-effect"><i class="material-icons cmake">info</i></a></li></ul>'),
 			imageProfile = $('<li class="imageProfile"><a class="waves-effect waves-ripple waves-circle"><img class="responsive-img"/></a><span class="data-name">Acheampong Lord</span></li>');
 
 		//Checking if the function is not null
@@ -103,18 +103,6 @@
 	    	$(this).attr("id","lp-"+index);
 	    });
 
-	    _closeItem.click(function(){
-	    	overlay.detach();
-	    	overlay_header.detach();
-	    	overlay_body.detach();
-	    	overlay_imgContainer.detach();
-	    	//Trials not stable
-	    	var subPage = window.location.href,
-	    		title   = subPage.split("/"),
-	    		tagger  = title[title.length - 1];
-	    		
-	    		
-	    });
 	    //Getting all the images inside the container
 	    var dataImg,__imgHref,objImages,$asArray,$pathURI,$tagSRC;
 
@@ -146,18 +134,44 @@
 
        		for (var i = 0; i < $asArray.length; i++) {
        			$pathURI = $($asArray[i]);
+       			$pathURI.attr("id","lg-"+i);
        			if ($pathURI.attr("src") === _getImgsrc) {
        				$pathURI.css({"display":"block"});
+       				$pathURI.addClass("active");
        			}
-       		}
 
+       		}
        		//Callling the background image function here
        		imgAsBackground();
        		hideHeader();
        		// overlay_imgContainer.append(imgTag);
        		// imgTag.attr("src",""+_getImgsrc+"");
-		});
+		});	
 
+		_closeItem.click(function(){
+	    	overlay.detach();
+	    	overlay_header.detach();
+	    	overlay_body.detach();
+	    	overlay_imgContainer.detach();
+	    	
+
+	    	//Trials not stable
+	    	var subPage = window.location.href,
+	    		title   = subPage.split("/"),
+	    		tagger  = title[title.length - 1];
+	    		
+	    		
+	    });
+		function CheckDownloadButton(){
+			var downloadBtn = '';
+			if (settings.downloadButton && settings.downloadButton == true) {
+			   downloadBtn = '<li><a class="waves-circle waves-ripple waves-effect" id="download"><i class="material-icons cmake">file_download</i></a></li>';
+			   navBarLeft.prepend(downloadBtn);
+
+			}else if (settings.downloadButton && settings.downloadButton == false){
+				return;
+			}
+		}
 		//Check for fullscreen browser support
 		function CheckFullscreen(){
 			var fullscreen = '';
@@ -197,8 +211,8 @@
 				document.webkitExitFullscreen();
 			}
 		}
-
 		//Calling the init functions
+		CheckDownloadButton();
 		CheckFullscreen();
 		navBarLeft.children().find("#fullscreen").on("click",function(element,event){
 			if (!document.fullscreenElement && !document.msFullscreenElement && 
@@ -209,6 +223,24 @@
 				exitFullscreen();
 			}
 		});
+
+		navBarLeft.children().find("#download").on("click",function(event){
+			var x = document.getElementsByClassName("responsive-img");
+			 for (var i = 0; i < x.length; i++) {
+			 	if (x[i].style.display == "block") {
+			 		var _aTagger = document.createElement("a");
+			 		_aTagger.href = ""+ $(x[i]).attr("src")+"";
+			 		_aTagger.download = ""+ $(x[i]).attr("src")+"";
+			 		document.body.appendChild(_aTagger);
+			 		_aTagger.click();
+			 		document.body.removeChild(_aTagger);
+			 	}else if (x[i].style.display == "none") {
+			 		return ;
+			 	}
+			 }
+		});
+
+
 		//Configuring the theme
 		var _getTheme = settings.theme;
 		switch(_getTheme){
@@ -238,9 +270,10 @@
 
 	//Defining the default option variables
 	$.fn.LightUp.defaults = {
-		bottomSheet:true,
+		downloadButton:true,
+		bottomSheet:false,
 		useImageAsBackground:true,
-		hideHeader:false,
-		theme:$.LightUp.LIGHT_THEME
+		hideHeader:true,
+		theme:$.LightUp.DARK_THEME,
 	};
 }(jQuery));
