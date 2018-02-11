@@ -107,8 +107,8 @@
 	    var dataImg,__imgHref,objImages,$asArray,$pathURI,$tagSRC;
 
 		for (var i = 0; i < _getImage.length; i++) {
-			var dataImg = _getImage[i];
-			var __imgHref = $(dataImg).attr("href");
+			 dataImg = _getImage[i];
+			 __imgHref = $(dataImg).attr("href");
 			objImages = $('<img src="'+ __imgHref +'" class="responsive-img"/>');
 			overlay_imgContainer.append(objImages);
 		}
@@ -134,7 +134,7 @@
 
        		for (var i = 0; i < $asArray.length; i++) {
        			$pathURI = $($asArray[i]);
-       			$pathURI.attr("id","lg-"+i);
+       			$pathURI.addClass("lp-image");
        			if ($pathURI.attr("src") === _getImgsrc) {
        				$pathURI.css({"display":"block"});
        				$pathURI.addClass("active");
@@ -162,6 +162,7 @@
 	    		
 	    		
 	    });
+
 		function CheckDownloadButton(){
 			var downloadBtn = '';
 			if (settings.downloadButton && settings.downloadButton == true) {
@@ -227,6 +228,7 @@
 		navBarLeft.children().find("#download").on("click",function(event){
 			var x = document.getElementsByClassName("responsive-img");
 			 for (var i = 0; i < x.length; i++) {
+			 	 console.log(x[i]);
 			 	if (x[i].style.display == "block") {
 			 		var _aTagger = document.createElement("a");
 			 		_aTagger.href = ""+ $(x[i]).attr("src")+"";
@@ -265,7 +267,8 @@
 	//Defining the themes for the light up
 	$.LightUp = {
 		DARK_THEME:"DARK",
-		LIGHT_THEME:"LIGHT"
+		LIGHT_THEME:"LIGHT",
+		RED_THEME:"RED"
 	};
 
 	//Defining the default option variables
