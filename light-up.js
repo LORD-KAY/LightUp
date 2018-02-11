@@ -215,6 +215,7 @@
 		//Calling the init functions
 		CheckDownloadButton();
 		CheckFullscreen();
+
 		navBarLeft.children().find("#fullscreen").on("click",function(element,event){
 			if (!document.fullscreenElement && !document.msFullscreenElement && 
 				!document.mozFullScreenElement && !document.webkitFullscreenElement) {
@@ -226,20 +227,12 @@
 		});
 
 		navBarLeft.children().find("#download").on("click",function(event){
-			var x = document.getElementsByClassName("responsive-img");
-			 for (var i = 0; i < x.length; i++) {
-			 	 console.log(x[i]);
-			 	if (x[i].style.display == "block") {
-			 		var _aTagger = document.createElement("a");
-			 		_aTagger.href = ""+ $(x[i]).attr("src")+"";
-			 		_aTagger.download = ""+ $(x[i]).attr("src")+"";
-			 		document.body.appendChild(_aTagger);
-			 		_aTagger.click();
-			 		document.body.removeChild(_aTagger);
-			 	}else if (x[i].style.display == "none") {
-			 		return ;
-			 	}
-			 }
+			var x = document.getElementsByClassName("lp-image");
+			for(var i = 0; i < x.length; i ++){
+				var imgStyle = x[i].style.display;
+				console.dir(imgStyle)
+			}
+
 		});
 
 
