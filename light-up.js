@@ -163,7 +163,8 @@
 	           converter = URI.toString(),
 	           hashPosition = converter.indexOf("#");
 	           if (hashPosition > 0) {
-	           	
+	           	var localURI = converter.substring(0,hashPosition);
+	           	window.history.replaceState({},document.title,localURI);
 	           }
 	    }
 
