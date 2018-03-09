@@ -162,6 +162,9 @@
 	    	var URI = window.location.href,
 	           converter = URI.toString(),
 	           hashPosition = converter.indexOf("#");
+	           if (hashPosition > 0) {
+	           	
+	           }
 	    }
 
 		function CheckDownloadButton(){
