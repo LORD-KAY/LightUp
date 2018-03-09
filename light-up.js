@@ -153,19 +153,15 @@
 	    	overlay_header.detach();
 	    	overlay_body.detach();
 	    	overlay_imgContainer.detach();
-	    	remove_hash_from_url();
+	    	//Calling the hash uri removal uri
+	    	RemoveHashURL();
 
 	    });
 
-	    function remove_hash_from_url(){
-	    	var uri = window.location.toString();
-	    	if (uri.indexOf("#") > 0) {
-	    		var position  = uri.indexOf("#");
-	    		var originURL = uri.substr(position);
-	    		// var clean = uri.substring(0,uri.indexOf("#"));
-	    		// console.log(clean);
-	    		// window.history.replaceState({}, document.title, clean );
-	    	}
+	    function RemoveHashURL(){
+	    	var URI = window.location.href,
+	           converter = URI.toString(),
+	           hashPosition = converter.indexOf("#");
 	    }
 
 		function CheckDownloadButton(){
