@@ -259,6 +259,19 @@
 		//Checking the performance navigation of the browser
 		var getCurrentURL = window.location.href,
 			strurl = getCurrentURL.toString();
+			if (strurl.indexOf("#") > 0) {
+				var positionUrl = strurl.indexOf("#");
+				var hash = strurl.substring(positionUrl);
+				
+				if (window.performance) {
+					if (performance.navigation.type == 1 && hash != ' ') {
+						RemoveHashURL();
+					}
+				}
+			}
+			else if (strurl.indexOf("#") <= -1) {
+				return null;
+			}
 
 		//Configuring the theme
 		var _getTheme = settings.theme;
