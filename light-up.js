@@ -159,8 +159,8 @@
 	    	var subPage = window.location.href,
 	    		title   = subPage.split("/"),
 	    		tagger  = title[title.length - 1];
-	    		
-	    		
+	    	 window.location.replace(tagger,' ');
+
 	    });
 
 		function CheckDownloadButton(){
@@ -242,7 +242,7 @@
 						document.body.removeChild(_aTagger);
 						break;
 					case "none":
-						return;
+						return "";
 						break;
 				}
 			}
@@ -263,7 +263,6 @@
 				break;
 
 		}
-
 
 		return $.extend({},this,{
 			"getSettings":getSettings,
