@@ -241,13 +241,12 @@
 				switch(imgStyle)
 				{
 					case "block":
-      //                   var _aTagger = document.createElement("a");
-						// _aTagger.href = ""+ $(x[i]).attr("src")+"";
-						// _aTagger.download = ""+ $(x[i]).attr("src")+"";
-						// document.body.appendChild(_aTagger);
-						// _aTagger.click();
-						// document.body.removeChild(_aTagger);
-						console.log("Yay");
+                        var _aTagger = document.createElement("a");
+						_aTagger.href = ""+ $(x[i]).attr("src")+"";
+						_aTagger.download = ""+ $(x[i]).attr("src")+"";
+						document.body.appendChild(_aTagger);
+						_aTagger.click();
+						document.body.removeChild(_aTagger);
 						break;
 					case "none":
 						return "";
@@ -257,6 +256,9 @@
 
 		});
 
+		//Checking the performance navigation of the browser
+		var getCurrentURL = window.location.href,
+			strurl = getCurrentURL.toString();
 
 		//Configuring the theme
 		var _getTheme = settings.theme;
