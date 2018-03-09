@@ -153,15 +153,20 @@
 	    	overlay_header.detach();
 	    	overlay_body.detach();
 	    	overlay_imgContainer.detach();
-	    	
-
-	    	//Trials not stable
-	    	var subPage = window.location.href,
-	    		title   = subPage.split("/"),
-	    		tagger  = title[title.length - 1];
-	    	 window.location.replace(tagger,' ');
+	    	remove_hash_from_url();
 
 	    });
+
+	    function remove_hash_from_url(){
+	    	var uri = window.location.toString();
+	    	if (uri.indexOf("#") > 0) {
+	    		var position  = uri.indexOf("#");
+	    		var originURL = uri.substr(position);
+	    		// var clean = uri.substring(0,uri.indexOf("#"));
+	    		// console.log(clean);
+	    		// window.history.replaceState({}, document.title, clean );
+	    	}
+	    }
 
 		function CheckDownloadButton(){
 			var downloadBtn = '';
@@ -226,7 +231,9 @@
 			}
 		});
 
-		navBarLeft.children().find("#download").on("click",function(event){
+
+
+		navBarLeft.children().find("#download").click(function(event){
 			var x = document.getElementsByClassName("lp-image");
 			for(var i = 0; i < x.length; i ++){
 				var imgStyle = x[i].style.display;
@@ -234,12 +241,13 @@
 				switch(imgStyle)
 				{
 					case "block":
-                        var _aTagger = document.createElement("a");
-						_aTagger.href = ""+ $(x[i]).attr("src")+"";
-						_aTagger.download = ""+ $(x[i]).attr("src")+"";
-						document.body.appendChild(_aTagger);
-						_aTagger.click();
-						document.body.removeChild(_aTagger);
+      //                   var _aTagger = document.createElement("a");
+						// _aTagger.href = ""+ $(x[i]).attr("src")+"";
+						// _aTagger.download = ""+ $(x[i]).attr("src")+"";
+						// document.body.appendChild(_aTagger);
+						// _aTagger.click();
+						// document.body.removeChild(_aTagger);
+						console.log("Yay");
 						break;
 					case "none":
 						return "";
